@@ -1,0 +1,25 @@
+.686
+.model flat, stdcall
+option casemap: none
+.data
+ X1 dd 17, 21, 5, 8 ,10 ,11 ,13 ,18
+ LENX1 EQU $ -X1
+ Y1 db LENX1 DUP(0FFh)
+ ;Y2 dd
+.code
+start:
+ xor ecx, ecx
+ mov cl, LENX1
+ mov esi,0
+ mov edi,0
+ mov eax,0
+DOLOOP:
+ mov ah,[X1+i]
+ not ah
+ bsr bx,ax
+ mov [Y1+i],bx
+ add i,1
+ loop DOLOOP
+ret
+end start
+ 

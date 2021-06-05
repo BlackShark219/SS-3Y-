@@ -1,0 +1,24 @@
+.686
+.model flat, stdcall
+option casemap: none
+.CONST
+ vectLength = 8
+ elemWidth = 4
+.data
+X1 dd 17, 21, 5, 8 ,10 ,11 ,13 ,18
+Y1 db
+Y2 dd
+bCounter db 0
+.code
+start:
+DoLoop:
+ xor eax, eax
+ xor ebx, ebx
+ mov al, bCounter
+ mov bl, elemWidth
+ mul bl
+ mov ecx, eax
+
+ mov edx, OFFSET X1
+ add edx, ecx
+ mov ax, WORD PTR [edx]

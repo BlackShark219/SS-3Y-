@@ -1,0 +1,2 @@
+LIBRARY actdll
+EXPORTS ACT1
